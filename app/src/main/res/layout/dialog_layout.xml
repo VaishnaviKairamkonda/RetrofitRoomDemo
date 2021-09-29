@@ -53,11 +53,14 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textexplanation"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
                     android:maxLines="30"
                     android:textStyle="bold"
+                    android:padding="10dp"
                     android:textSize="14dp"
+                    android:layout_marginEnd="20dp"
+                    android:scrollbars="vertical"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/white"
                     android:layout_marginStart="20dp"

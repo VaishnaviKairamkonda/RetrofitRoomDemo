@@ -3,8 +3,9 @@ package e.gcs.retrofitdemo.Network;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retrofit {
+    public static final String URL_DATA="https://api.nasa.gov/planetary/";
     retrofit2.Retrofit retrofit=new retrofit2.Retrofit.Builder()
-            .baseUrl(Url.URL_DATA)
+            .baseUrl(URL_DATA)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     public Api api=retrofit.create(Api.class);
