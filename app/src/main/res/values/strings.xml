@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RetrofitDemo</string>
+    <string name="btnmore">more</string>
+    <string name="btn1">1</string>
+    <string name="btn2">2</string>
+    <string name="btn3">3</string>
+    <string name="btn4">4</string>
+    <string name="tvview">Please click on Button </string>
+    <string name="tvTitle">Title:  </string>
+    <string name="tvUrl">URL:  </string>
+    <string name="tvExplanation">Explanation:  </string>
+</resources>
