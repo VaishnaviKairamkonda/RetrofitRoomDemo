@@ -42,24 +42,8 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
         WebViewHolder.btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            }
-        });
-        return WebViewHolder;
-    }
-    @Override
-    public void onBindViewHolder(@NonNull WebViewHolder holder, int position) {
-        final Web web=webList.get(position);
-        holder.title.setText(web.getTitle());
-        holder.url.setText(web.getUrl());
-        holder.url.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-                browserIntent.setData(Uri.parse(web.getUrl()));
-                context.startActivity(browserIntent);
-            }
-        });
-        holder.btnmore.setOnClickListener(new View.OnClickListener() {
+                
+                holder.btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext());
@@ -94,6 +78,22 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
                 alertDialog.show();
                 Window window = alertDialog.getWindow();
                 window.setLayout(RecyclerView.LayoutParams.FILL_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        
+            }
+        });
+        return WebViewHolder;
+    }
+    @Override
+    public void onBindViewHolder(@NonNull WebViewHolder holder, int position) {
+        final Web web=webList.get(position);
+        holder.title.setText(web.getTitle());
+        holder.url.setText(web.getUrl());
+        holder.url.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse(web.getUrl()));
+                context.startActivity(browserIntent);
             }
         });
     }
