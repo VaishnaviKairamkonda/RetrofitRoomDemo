@@ -11,6 +11,7 @@ import e.gcs.retrofitdemo.Model.Web;
 import e.gcs.retrofitdemo.Repository.WebRepository;
 import e.gcs.retrofitdemo.ViewModel.WebViewModel;
 import e.gcs.retrofitdemo.Network.Retrofit;
+import e.gcs.retrofitdemo.databinding.ActivityMainBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btn1,btn2,btn3,btn4;
     TextView tvview;
     private WebViewModel webViewModel;
-
+    ActivityMainBinding activityMainBinding;
     private RecyclerView recyclerView;
     private WebListAdapter weblistAdapter;
     public String count ="";
@@ -37,12 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btn1=(Button)findViewById(R.id.btn1);
-        btn2=(Button)findViewById(R.id.btn2);
-        btn3=(Button)findViewById(R.id.btn3);
-        btn4=(Button)findViewById(R.id.btn4);
-        tvview=(TextView) findViewById(R.id.empty_view);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = activityMainBinding.getRoot();
+
+        setContentView(view);
+        btn1=activityMainBinding.btn1;
+        btn2=activityMainBinding.btn2;
+        btn3=activityMainBinding.btn3;
+        btn4=activityMainBinding.btn4;
+        tvview=activityMainBinding.emptyView;
 
 
         btn1.setOnClickListener(this);
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
 
-        recyclerView=findViewById(R.id.recyclerview);
+        recyclerView=activityMainBinding.recyclerview;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
