@@ -8,22 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import e.gcs.retrofitdemo.Adapter.WebListAdapter;
 import e.gcs.retrofitdemo.Model.Web;
-import e.gcs.retrofitdemo.Repository.WebRepository;
+
 import e.gcs.retrofitdemo.ViewModel.WebViewModel;
-import e.gcs.retrofitdemo.Network.Retrofit;
+
 import e.gcs.retrofitdemo.databinding.ActivityMainBinding;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

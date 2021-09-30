@@ -11,7 +11,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import e.gcs.retrofitdemo.Database.WebRoomDatabase;
 import e.gcs.retrofitdemo.Model.Web;
-import e.gcs.retrofitdemo.Network.Retrofit;
+
+import e.gcs.retrofitdemo.Network.RetrofitServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,32 +48,32 @@ public class WebRepository  {
     }
 
     public void retrofitRequest(String count) {
+        RetrofitServices.getInstance().getApi().getAllWebs(apikey,count)
+                .enqueue(new Callback<List<Web>>() {
+                    @Override
+                    public void onResponse(Call<List<Web>> call, Response<List<Web>> response) {
 
-        Retrofit retrofit=new Retrofit();
-        Call<List<Web>> call=retrofit.api.getAllWebs(apikey,count);
-        call.enqueue(new Callback<List<Web>>() {
-            @Override
-            public void onResponse(Call<List<Web>> call, Response<List<Web>> response) {
-                if(response.isSuccessful())
-                {
-                    insert(response.body());
-                    Log.d("main", "onResponse: "+response.body());
+                        if(response.isSuccessful())
+                        {
+                            insert(response.body());
+                            Log.d("main", "onResponse: "+response.body());
 
-                    //toast(context,"Data Inserted Successfully");
+                            //toast(context,"Data Inserted Successfully");
 
-                    toastMessageObserver.setValue("Data Inserted Successfully"+response.message());
-                }
+                            toastMessageObserver.setValue("Data Inserted Successfully"+response.message());
+                        }
 
-                else {
-                    response.code();
-                }
-            }
+                        else {
+                            response.code();
+                        }
+                    }
 
-            @Override
-            public void onFailure(Call<List<Web>> call, Throwable t) {
-                Toast.makeText(context, "something went wrong...", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    @Override
+                    public void onFailure(Call<List<Web>> call, Throwable t) {
+                       // Toast.makeText(context, "something went wrong...", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
     }
 

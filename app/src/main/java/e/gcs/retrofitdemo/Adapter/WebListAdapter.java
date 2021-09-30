@@ -38,14 +38,12 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
     public WebViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_layout,parent,false);
-        final WebViewHolder WebViewHolder =new WebViewHolder(v);
-        WebViewHolder.btnmore.setOnClickListener(new View.OnClickListener() {
+        final WebViewHolder webViewHolder =new WebViewHolder(v);
+        final Web web=webList.get(viewType);
+        webViewHolder.btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 
-                holder.btnmore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext());
                 View view=LayoutInflater.from(context).inflate(R.layout.dialog_layout,null);
 
@@ -81,7 +79,7 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
         
             }
         });
-        return WebViewHolder;
+        return webViewHolder;
     }
     @Override
     public void onBindViewHolder(@NonNull WebViewHolder holder, int position) {
@@ -124,3 +122,4 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
         diffResult.dispatchUpdatesTo(this);
     }
 }
+
