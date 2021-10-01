@@ -40,6 +40,16 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
                 .inflate(R.layout.list_layout,parent,false);
         final WebViewHolder webViewHolder =new WebViewHolder(v);
         final Web web=webList.get(viewType);
+        
+         webViewHolder.url.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse(web.getUrl()));
+                context.startActivity(browserIntent);
+            }
+        });
+        
         webViewHolder.btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +96,7 @@ public class WebListAdapter  extends RecyclerView.Adapter<WebListAdapter.WebView
         final Web web=webList.get(position);
         holder.title.setText(web.getTitle());
         holder.url.setText(web.getUrl());
-        holder.url.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-                browserIntent.setData(Uri.parse(web.getUrl()));
-                context.startActivity(browserIntent);
-            }
-        });
+       
     }
 
     public void getAllWebs(List<Web> webList)
